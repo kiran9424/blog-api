@@ -7,7 +7,11 @@ const mongoose = require('mongoose')
 require('dotenv').config();
 
 //importing Routes
-const authRoutes = require('./routes/auth')
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
+const categoryRoutes = require('./routes/category');
+const tagRoutes = require('./routes/tag');
+const blogRoutes = require('./routes/blog');
 
 const app= express();
 
@@ -18,7 +22,11 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(cors());
 
-app.use(authRoutes);
+app.use('/api/v1/',authRoutes);
+app.use('/api/v1/',userRoutes);
+app.use('/api/v1/',categoryRoutes);
+app.use('/api/v1/',tagRoutes);
+app.use('/api/v1/',blogRoutes);
 
 const port = process.env.PORT || 3000;
 
